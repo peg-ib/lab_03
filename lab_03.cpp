@@ -43,7 +43,10 @@ void metod(double left, double right)
 	xk = Random(left, right);
 	xmin = xk;
 	int i = 1;
-	std::cout << "N" << "     T     " << "    x     " << "    f(x)    " << "   P   " << "   true or false " << std::endl;
+	std::cout << std::fixed;
+	std::cout << "+---+------------+----------+------------+------------+-------------+" << std::endl;
+	std::cout << "|" << std::setw(3) << "N" << "|" << std::setw(12) << "T" << "|" << std::setw(10) << "x" << "|" << std::setw(12) << "f(x)" << "|" << std::setw(12) << "P" << "|" << std::setw(13) << "true or false" << "|" << std::endl;
+	std::cout << "+---+------------+----------+------------+------------+-------------+" << std::endl;
 	while (T > Tmin)
 	{
 		x = Random(left, right);
@@ -69,7 +72,7 @@ void metod(double left, double right)
 			}
 		}
 		//Вывод значений
-		std::cout << i << "   " << T << "   " << xk << "   " << u_function(xk) << "   " << P << "   " << p << std::endl;
+		std::cout << "|" << std::setw(3) << i << "|" << std::setw(12) << T << "|" << std::setw(10) << xk << "|" << std::setw(12) << u_function(xk) << "|" << std::setw(12) << P << "|" << std::setw(13) << p << "|" << std::endl;
 		if (u_function(xk) < u_function(xmin))
 		{
 			xmin = xk;
@@ -79,12 +82,15 @@ void metod(double left, double right)
 		i++;
 	}
 	//Вывод наименьшего значения функции на заданном интервале 
+	std::cout << "+---+------------+----------+------------+------------+-------------+" << std::endl;
 	std::cout << "Result:" << ' ' << "Xmin=" << xmin << ' ' << "Fmin=" << u_function(xmin);
 	std::cout << std::endl << std::endl;
 
 
 	//Мультимодальная функции
-	std::cout << "N" << "     T     " << "    x     " << "    f(x)    " << "   P   " << "   true or false " << std::endl;
+	std::cout << "+---+------------+----------+------------+------------+-------------+" << std::endl;
+	std::cout << "|" << std::setw(3) << "N" << "|" << std::setw(12) << "T" << "|" << std::setw(10) << "x" << "|" << std::setw(12) << "f(x)" << "|" << std::setw(12) << "P" << "|" << std::setw(13) << "true or false" << "|" << std::endl;
+	std::cout << "+---+------------+----------+------------+------------+-------------+" << std::endl;
 	xmin = xk;
 	Tmax = 1000;//Начальное значение температуры
 	Tmin = 0.001;//Конечное значение температуры
@@ -115,7 +121,7 @@ void metod(double left, double right)
 			}
 		}
 		//Ввывод значений 
-		std::cout << i << "   " << T << "   " << xk << "   " << u_function(xk) << "   " << P << "   " << p << std::endl;
+		std::cout << "|" << std::setw(3) << i << "|" << std::setw(12) << T << "|" << std::setw(10) << xk << "|" << std::setw(12) << u_function(xk) << "|" << std::setw(12) << P << "|" << std::setw(13) << p << "|" << std::endl;
 		if (m_function(xk) < m_function(xmin))
 		{
 			xmin = xk;
@@ -125,6 +131,7 @@ void metod(double left, double right)
 		i++;
 	}
 	//Вывод наименьшего значения функции на заданном интервале
+	std::cout << "+---+------------+----------+------------+------------+-------------+" << std::endl;
 	std::cout << "Result:" << ' ' << "Xmin=" << xmin << ' ' << "Fmin=" << m_function(xmin);
 }
 int main()
