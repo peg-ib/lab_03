@@ -52,7 +52,7 @@ void metod(double left, double right)
 
 		if (T == 1000)
 		{
-			P = 100;
+			P = 1;
 			p = "true";
 			std::cout << "|" << std::setw(3) << i << "|" << std::setw(12) << T << "|" << std::setw(10) << xk << "|" << std::setw(12) << u_function(xk) << "|" << std::setw(12) << P << "|" << std::setw(13) << p << "|" << std::endl;
 			T = Tmax * 0.95;
@@ -64,7 +64,7 @@ void metod(double left, double right)
 		df = u_function(x) - u_function(xk);//Вычисляем разность значений функции,для дальнейшего сравнения
 		if (df <= 0)
 		{
-			P = 100;
+			P = 1;
 			xk = x;
 			p = "true";//Переход выполнен
 		}
@@ -72,7 +72,7 @@ void metod(double left, double right)
 		{
 			P = exp(-df / T);//Вероятность перехода
 			probability(P);
-			P = P * 100;
+			P = P * 1;
 			if (probability(P) == true)
 			{
 				xk = x;
@@ -103,6 +103,7 @@ void metod(double left, double right)
 	std::cout << "+---+------------+----------+------------+------------+-------------+" << std::endl;
 	std::cout << "|" << std::setw(3) << "N" << "|" << std::setw(12) << "T" << "|" << std::setw(10) << "x" << "|" << std::setw(12) << "f(x)" << "|" << std::setw(12) << "P" << "|" << std::setw(13) << "true or false" << "|" << std::endl;
 	std::cout << "+---+------------+----------+------------+------------+-------------+" << std::endl;
+	xk = Random(left, right);
 	xmin = xk;
 	Tmax = 1000;//Начальное значение температуры
 	Tmin = 0.001;//Конечное значение температуры
@@ -112,7 +113,8 @@ void metod(double left, double right)
 	{
 		if (T == 1000)
 		{
-			P = 100;
+			P = 1;
+			p = "true";
 			std::cout << "|" << std::setw(3) << i << "|" << std::setw(12) << T << "|" << std::setw(10) << xk << "|" << std::setw(12) << u_function(xk) << "|" << std::setw(12) << P << "|" << std::setw(13) << p << "|" << std::endl;
 			T = Tmax * 0.95;
 			Tmax = T;
@@ -123,7 +125,7 @@ void metod(double left, double right)
 		df = m_function(x) - m_function(xk);//Вычисляем разность значений функции,для дальнейшего сравнения
 		if (df <= 0)
 		{
-			P = 100;
+			P = 1;
 			xk = x;
 			p = "true";//Переход выполнен
 		}
@@ -131,7 +133,6 @@ void metod(double left, double right)
 		{
 			P = exp(-df / T);//Вероятность перехода
 			probability(P);
-			P = P * 100;
 			if (probability(P) == true)
 			{
 				xk = x;
