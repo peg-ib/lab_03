@@ -72,7 +72,6 @@ void metod(double left, double right)
 		{
 			P = exp(-df / T);//Вероятность перехода
 			probability(P);
-			P = P * 1;
 			if (probability(P) == true)
 			{
 				xk = x;
