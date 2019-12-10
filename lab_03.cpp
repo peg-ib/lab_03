@@ -49,11 +49,22 @@ void metod(double left, double right)
 	std::cout << "+---+------------+----------+------------+------------+-------------+" << std::endl;
 	while (T > Tmin)
 	{
+
+		if (T == 1000)
+		{
+			P = 100;
+			p = "true";
+			std::cout << "|" << std::setw(3) << i << "|" << std::setw(12) << T << "|" << std::setw(10) << xk << "|" << std::setw(12) << u_function(xk) << "|" << std::setw(12) << P << "|" << std::setw(13) << p << "|" << std::endl;
+			T = Tmax * 0.95;
+			Tmax = T;
+			i++;
+			continue;
+		}
 		x = Random(left, right);
 		df = u_function(x) - u_function(xk);//Вычисляем разность значений функции,для дальнейшего сравнения
 		if (df <= 0)
 		{
-			P = 1;
+			P = 100;
 			xk = x;
 			p = "true";//Переход выполнен
 		}
@@ -61,6 +72,7 @@ void metod(double left, double right)
 		{
 			P = exp(-df / T);//Вероятность перехода
 			probability(P);
+			P = P * 100;
 			if (probability(P) == true)
 			{
 				xk = x;
@@ -98,11 +110,20 @@ void metod(double left, double right)
 	i = 1;
 	while (T > Tmin)
 	{
+		if (T == 1000)
+		{
+			P = 100;
+			std::cout << "|" << std::setw(3) << i << "|" << std::setw(12) << T << "|" << std::setw(10) << xk << "|" << std::setw(12) << u_function(xk) << "|" << std::setw(12) << P << "|" << std::setw(13) << p << "|" << std::endl;
+			T = Tmax * 0.95;
+			Tmax = T;
+			i++;
+			continue;
+		}
 		x = Random(left, right);
 		df = m_function(x) - m_function(xk);//Вычисляем разность значений функции,для дальнейшего сравнения
 		if (df <= 0)
 		{
-			P = 1;
+			P = 100;
 			xk = x;
 			p = "true";//Переход выполнен
 		}
@@ -110,6 +131,7 @@ void metod(double left, double right)
 		{
 			P = exp(-df / T);//Вероятность перехода
 			probability(P);
+			P = P * 100;
 			if (probability(P) == true)
 			{
 				xk = x;
